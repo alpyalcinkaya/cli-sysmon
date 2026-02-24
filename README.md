@@ -2,7 +2,7 @@
 A lightweight system health and update monitor built for CachyOS (and other Arch-based distributions).
 
 ## Why?
-This project was born out of curiosity to explore the intersection of System Administration and Software Engineering. While many monitoring tools exist, this was built to gain more practice with:
+This project was born out of curiosity to explore the intersection of System Administration and Software Engineering. While many monitoring tools exist, this was built for the purposes of practice with:
 1) Modular Architecture
 2) Python Packaging
 3) Terminal UIs (TUI)
