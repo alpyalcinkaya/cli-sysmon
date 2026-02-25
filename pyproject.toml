@@ -17,4 +17,4 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [project.scripts]
-sysmon = "sysmon_tool.system_monitor:main"
+sysmon = "sysmon_tool.main:main"
