@@ -73,6 +73,7 @@ def _build_header() -> Panel:
 def _build_metric_panel(
     metric: MetricResult,
     history: list[float] | None = None,
+    extra_histories: list[tuple[list[float], str]] | None = None,
 ) -> Panel:
     content = Table.grid(padding=(0, 1))
     content.add_column(justify="left", min_width=22)
@@ -97,6 +98,14 @@ def _build_metric_panel(
             Text(spark, style=f"{metric.color}"),
             Text(""),
         )
+
+    if extra_histories:
+        for suffix, label_char in extra_histories:
+            spark = _sparkline(suffix)
+            line = Text()
+            line.append(f"{label_char} ", style="dim")
+            line.append(spark, style=f"{metric.color}")
+            content.add_row(line, Text(""))
 
     title = f"{metric.icon}  {metric.label}"
     return Panel(content, title=f"[bold]{title}[/]", title_align="left", border_style="dim")
@@ -126,7 +135,15 @@ def render(
     pairs: list[list[Panel]] = []
     row: list[Panel] = []
     for m in metrics:
-        panel = _build_metric_panel(m, history.get(m.label.lower()))
+        extra_histories = None
+        if m.extras:
+            extra_labels = {"rx": "↓", "tx": "↑"}
+            extra_histories = [
+                (history.get(f"{m.label.lower()}:{key}", []), extra_labels.get(key, key))
+                for key in m.extras
+                if history.get(f"{m.label.lower()}:{key}")
+            ]
+        panel = _build_metric_panel(m, history.get(m.label.lower()), extra_histories or None)
         row.append(panel)
         if len(row) == 2:
             pairs.append(row)

@@ -38,6 +38,9 @@ def main() -> None:
                     metrics.append(result)
                     if result.percentage is not None:
                         tracker.record(result.label.lower(), result.percentage)
+                    if result.extras:
+                        for key, val in result.extras.items():
+                            tracker.record(f"{result.label.lower()}:{key}", val)
 
                 dashboard = render(metrics, tracker.all_history(), config.refresh_interval)
                 live.update(dashboard)

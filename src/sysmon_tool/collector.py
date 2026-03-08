@@ -12,6 +12,7 @@ class MetricResult:
     color: str
     percentage: float | None = None
     unit: str = ""
+    extras: dict[str, float] | None = None
 
 
 @runtime_checkable

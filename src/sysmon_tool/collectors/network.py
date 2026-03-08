@@ -70,6 +70,7 @@ class NetworkCollector:
                 value=f"↓ {_human_speed(rx_speed)}  ↑ {_human_speed(tx_speed)}",
                 icon="󰛳",
                 color="cyan",
+                extras={"rx": rx_speed, "tx": tx_speed},
             )
         except Exception:
             return MetricResult(
