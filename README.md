@@ -8,9 +8,9 @@ This project was born out of curiosity to explore the intersection of System Adm
 3) Terminal UIs (TUI)
 
 ## Features
-**Live Dashboard**: Real-time monitoring of Disk and Memory usage.
-**Update Tracking**: Safe checking of pending `pacman` updates using the `checkupdates` utility.
-**Robust CLI**: A globally accessible command-line interface installed via Python entry points.
+- **Live Dashboard**: Real-time monitoring of Disk and Memory usage.
+- **Update Tracking**: Safe checking of pending `pacman` updates using the `checkupdates` utility.
+- **Robust CLI**: A globally accessible command-line interface installed via Python entry points.
 
 ## Example Image:
 ![Sysmon visual example displayed in terminal](sysmon.png)
